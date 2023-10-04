@@ -25,9 +25,9 @@ class AddViewModel : ViewModel() {
 
     fun getResult(): MutableLiveData<Boolean> = result
 
-    fun addProduct(product: Product){
+    fun addProduct(product: Product) {
         inProgress.value = true
-        repository.addProduct(product){
+        repository.addProduct(product) {
             inProgress.value = false
             result.value = it
         }

@@ -17,12 +17,12 @@ import androidx.preference.PreferenceManager
 class InventoryPreferences(application: Application) {
     private val preferences: SharedPreferences
 
-    companion object{
+    companion object {
         private const val K_WELCOME = "is_welcome"
 
         private var INSTANCE: InventoryPreferences? = null
 
-        fun getInstance(application: Application) = INSTANCE ?: synchronized(this){
+        fun getInstance(application: Application) = INSTANCE ?: synchronized(this) {
             InventoryPreferences(application).also { INSTANCE = it }
         }
     }
@@ -31,9 +31,10 @@ class InventoryPreferences(application: Application) {
         preferences = PreferenceManager.getDefaultSharedPreferences(application)
     }
 
-    fun setWelcome(value: Boolean){
+    fun setWelcome(value: Boolean) {
         preferences.edit().putBoolean(K_WELCOME, value).apply()
     }
 
+    //En el test cuando se manda a llamar la funcion  por eso da un true
     fun getWelcome(): Boolean = preferences.getBoolean(K_WELCOME, true)
 }

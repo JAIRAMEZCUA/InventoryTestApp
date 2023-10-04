@@ -10,9 +10,11 @@ package com.cursosant.inventorybase.entities
  * https://www.udemy.com/user/alain-nicolas-tello/
  * Web: www.alainnicolastello.com
  ***/
-data class Product(var id: Long = 0,
-                   var name: String,
-                   var quantity: Int,
-                   var photoUrl: String = "",
-                   var score: Double = 0.0,
-                   var totalVotes: Long = 0)
+data class Product(
+    var id: Long = 0,
+    var name: String,
+    var quantity: Int,
+    var photoUrl: String = "",
+    var score: Double = 0.0,
+    var totalVotes: Long = 0
+)
