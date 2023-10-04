@@ -58,7 +58,7 @@ class AddProductFragment : DialogFragment(), DialogInterface.OnShowListener {
     private fun setupTextFields() {
         binding.etPhotoUrl.addTextChangedListener {
             val photoUrl = binding.etPhotoUrl.text.toString().trim()
-            if (photoUrl.isEmpty()){
+            if (photoUrl.isEmpty()) {
                 binding.imgPhoto.setImageDrawable(null)
             } else {
                 val options = RequestOptions()
@@ -72,12 +72,14 @@ class AddProductFragment : DialogFragment(), DialogInterface.OnShowListener {
         }
     }
 
-    private fun setupViewModel(){
+    private fun setupViewModel() {
         viewModel = ViewModelProvider(requireActivity()).get(AddViewModel::class.java)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? = binding.root
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? = binding.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -91,7 +93,7 @@ class AddProductFragment : DialogFragment(), DialogInterface.OnShowListener {
         binding.etName.requestFocus()
     }
 
-    private fun setupObservers(){
+    private fun setupObservers() {
         viewModel.getResult().observe(viewLifecycleOwner, { result ->
             if (result) dismiss()
         })
@@ -106,7 +108,7 @@ class AddProductFragment : DialogFragment(), DialogInterface.OnShowListener {
             val positiveButton = it.getButton(DialogInterface.BUTTON_POSITIVE)
             val negativeButton = it.getButton(DialogInterface.BUTTON_NEGATIVE)
             positiveButton.setOnClickListener {
-                if (validateProduct()){
+                if (validateProduct()) {
                     val product = Product(
                         id = Random.nextLong(100, 1_000),
                         name = binding.etName.text.toString().trim(),
@@ -115,6 +117,7 @@ class AddProductFragment : DialogFragment(), DialogInterface.OnShowListener {
                     )
                     viewModel.addProduct(product)
                 }
+
             }
             negativeButton.setOnClickListener { dismiss() }
         }
